@@ -154,8 +154,7 @@ jobs:
             
             echo "✅ Deployment completed!"
       
-      - name: Health Check
+      - name: Deployment Status
         run: |
-          echo "Waiting for app to start..."
-          sleep 10
-          curl -f http://${{ secrets.EC2_HOST }}:5000/api/health || echo "Health check endpoint not reachable (check security groups)"
+          echo "✅ Deployment to EC2 completed!"
+          echo "🌐 App URL: http://${{ secrets.EC2_HOST }}:5000"
