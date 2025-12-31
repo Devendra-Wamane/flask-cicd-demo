@@ -1,0 +1,14 @@
+[Unit]
+Description=Flask CI/CD Demo Application
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/flask-app
+Environment="PATH=/home/ubuntu/flask-app/venv/bin"
+ExecStart=/home/ubuntu/flask-app/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 app:app
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

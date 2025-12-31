@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask CI/CD Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 { color: #333; }
+        p { color: #666; line-height: 1.6; }
+        .badge {
+            background: #28a745;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .endpoints {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Flask CI/CD Demo</h1>
+        <span class="badge">Deployed via GitHub Actions</span>
+        
+        <p>This Flask application demonstrates a complete CI/CD pipeline using GitHub Actions with deployment to AWS EC2.</p>
+        
+        <div class="endpoints">
+            <h3>Available Endpoints:</h3>
+            <ul>
+                <li><code>GET /</code> - This page</li>
+                <li><code>GET /api/health</code> - Health check</li>
+                <li><code>GET /api/info</code> - App information</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
