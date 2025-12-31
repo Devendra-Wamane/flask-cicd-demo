@@ -112,15 +112,27 @@ jobs:
           path: flask-app.zip
 
   # ==========================================
-  # JOB 4: Deploy to AWS EC2
+  # JOB 4: Deploy to AWS EC2 (Optional)
   # ==========================================
   deploy:
     name: Deploy to AWS EC2
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Only deploy if secrets are configured AND pushing to main
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.DEPLOY_ENABLED == 'true'
     
     steps:
+      - name: Check if deployment is configured
+        run: |
+          if [ -z "${{ secrets.EC2_HOST }}" ]; then
+            echo "⚠️ EC2_HOST secret not configured. Skipping deployment."
+            echo "To enable deployment, add these secrets in GitHub:"
+            echo "  - EC2_HOST: Your EC2 public IP"
+            echo "  - EC2_USER: ubuntu"
+            echo "  - EC2_SSH_KEY: Your private SSH key"
+            exit 0
+          fi
+      
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
